@@ -22,21 +22,20 @@ function App() {
                 );
     }, [setQuestionList, patientData]);
 
-    useEffect(() => {
-        patientData &&
-            response &&
+    const onSubmit = (data) => {
+        setResponse(data);
             fetch("/api/feedback/answer", {
                 method: "POST",
-                body: JSON.stringify(response),
+                body: JSON.stringify(data),
                 headers: { "Content-Type": "application/json" },
             })
                 .then((res) => res.json())
                 .then((data) => console.log(data))
                 .catch((err) => console.error("Error:", err));
-    }, [response, patientData]);
+    };
 
     return patientData && questionList ? (
-        <Feedback {...{ patientData, questionList, response, setResponse }} />
+        <Feedback {...{ patientData, questionList, response, onSubmit }} />
     ) : null;
 }
 

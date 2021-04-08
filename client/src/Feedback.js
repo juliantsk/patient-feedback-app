@@ -2,13 +2,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import FormInput from "./components/FormInput";
 
-function Feedback({ patientData, questionList, response, setResponse }) {
+function Feedback({ patientData, questionList, response, onSubmit }) {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const onSubmit = (data) => setResponse(data);
 
     return (
         <>
