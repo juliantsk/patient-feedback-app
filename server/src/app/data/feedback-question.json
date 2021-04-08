@@ -1,0 +1,42 @@
+{
+  "resourceType": "Bundle",
+  "id": "0c3151bd-1cbf-4d64-b04d-cd9187a4c7e0",
+  "timestamp": "2021-04-02T12:12:21Z",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient Feedback Questions",
+        "id": "9bf9e532-93bd-11eb-a8b3-0242ac130003",
+        "questionList": [
+            {
+                "id": "q0001",
+                "text": "Hi [Patient First Name], on a scale of 1-10, would you recommend Dr [Doctor Last Name] to a friend or family member? 1 = Would not recommend, 10 = Would strongly recommend",
+                "input": {
+                  "type": "number",
+                  "min": 1,
+                  "max": 10
+                },
+                "validation": {"required": true}
+            },
+            {
+                "id": "q0002",
+                "text": "Thank you. You were diagnosed with [Diagnosis]. Did Dr [Doctor Last Name] explain how to manage this diagnosis in a way you could understand?",
+                  "input": {
+                    "type":"radio",
+                    "options": [
+                      {"value": "Yes"},
+                      {"value": "No", "additionalText": true}
+                    ]
+                },
+                "validation": {"required": true}
+            },
+            {
+                "id": "q0003",
+                "text": "We appreciate the feedback, one last question: how do you feel about being diagnosed with [Diagnosis]?",
+                "validation": {"required": true}
+            }
+        ]
+      }
+    }
+  ]
+}
