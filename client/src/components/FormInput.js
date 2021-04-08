@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function FormInput({
     name,
@@ -12,7 +12,7 @@ function FormInput({
         switch (input.type) {
             case "radio":
                 return input.options.map(({ value, additionalText }, i) => (
-                    <>
+                    <label className="box">
                         <input
                             name={name}
                             id={value}
@@ -22,16 +22,19 @@ function FormInput({
                         />
                         {value}
                         {additionalText ? (
-                            <input
+                            <textarea
+                                className="textarea is-primary is-small has-fixed-size"
                                 name={name}
+                                placeholder="Please explain"
                                 {...register(name + "_" + value)}
                             />
                         ) : null}
-                    </>
+                    </label>
                 ));
             case "number":
                 return (
                     <input
+                        className="input is-primary"
                         name={name}
                         type={input.type}
                         min={input.min}
@@ -41,7 +44,8 @@ function FormInput({
                 );
             default:
                 return (
-                    <input
+                    <textarea
+                        className="textarea is-primary is-small has-fixed-size"
                         name={name}
                         type={input.type}
                         {...register(name, validation)}
@@ -51,11 +55,13 @@ function FormInput({
     };
 
     return (
-        <label>
-            <span>{label}</span>
-            <span>{renderInput()}</span>
-            <span>{errors[name] && "This is required"}</span>
-        </label>
+        <div className="box">
+            <label>
+                <p className="content">{label}</p>
+                <span>{renderInput()}</span>
+                <span>{errors[name] && "This is required"}</span>
+            </label>
+        </div>
     );
 }
 

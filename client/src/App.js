@@ -35,7 +35,9 @@ function App() {
     };
 
     return patientData && questionList ? (
+        <div className="columns is-centered has-background-light"> 
         <Feedback {...{ patientData, questionList, response, onSubmit }} />
+</div>
     ) : null;
 }
 
