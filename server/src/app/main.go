@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -29,6 +30,9 @@ func parseJsonFile(location string) func(w http.ResponseWriter, r *http.Request)
 
 func savePatientAnswer(w http.ResponseWriter, r *http.Request) {
 	var message error
+	if r.Method != http.MethodPost {
+		message = errors.New("Error: not POST")
+	}
 	jsonByteSlice, _ := ioutil.ReadAll(r.Body)
 	jsonFile, err := os.OpenFile("data/answer" + time.Now().Format("20060102150405"), os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
 	if err != nil {
