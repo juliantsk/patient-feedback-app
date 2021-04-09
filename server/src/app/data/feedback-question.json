@@ -11,6 +11,7 @@
             {
                 "id": "q0001",
                 "text": "Hi [Patient First Name], on a scale of 1-10, would you recommend Dr [Doctor Last Name] to a friend or family member? 1 = Would not recommend, 10 = Would strongly recommend",
+                "response": "You rated your doctor as:",
                 "input": {
                   "type": "number",
                   "min": 1,
@@ -21,6 +22,7 @@
             {
                 "id": "q0002",
                 "text": "Thank you. You were diagnosed with [Diagnosis]. Did Dr [Doctor Last Name] explain how to manage this diagnosis in a way you could understand?",
+                "response": "Your doctor explained your diagnosis:",
                   "input": {
                     "type":"radio",
                     "options": [
@@ -33,6 +35,7 @@
             {
                 "id": "q0003",
                 "text": "We appreciate the feedback, one last question: how do you feel about being diagnosed with [Diagnosis]?",
+                "response": "Your feelings about your diagnosis are:",
                 "validation": {"required": true}
             }
         ]

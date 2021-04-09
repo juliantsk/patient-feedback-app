@@ -23,7 +23,15 @@ function App() {
     }, [setQuestionList, patientData]);
 
     const onSubmit = (data) => {
-        setResponse(data);
+        setResponse(
+            Object.keys(data)
+                .filter((key) => key.indexOf("_") < 0)
+                .map((key) =>
+                    data[key + "_" + data[key]]
+                        ? data[key] + ", " + data[key + "_" + data[key]]
+                        : data[key]
+                )
+        );
             fetch("/api/feedback/answer", {
                 method: "POST",
                 body: JSON.stringify(data),

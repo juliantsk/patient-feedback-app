@@ -11,7 +11,7 @@ function Feedback({ patientData, questionList, response, onSubmit }) {
 
     return (
         <div className="column is-half">
-            <h1 className="title">Patient Feedback</h1>
+            <h1 className="title has-text-dark">Patient Feedback</h1>
             <h2 className="subtitle">
                 {patientData.appointment.text + " "}
                 {patientData.appointment.date
@@ -35,11 +35,16 @@ function Feedback({ patientData, questionList, response, onSubmit }) {
                 </form>
             ) : (
                 <div className="box">
-                    <p className="content is-medium">
-                        Thanks again! Here's what we heard:
+                    <p className="content is-medium has-text-centered">
+                        Thanks again! Here's what we heard
                     </p>
-                    {Object.entries(response).map((item) => (
-                        <p className="content is-medium">{item[1]}</p>
+                    {Object.entries(response).map((item, i) => (
+                        <div className="box">
+                            <p className="content is-medium is-italic">
+                                {questionList[i]?.response}
+                            </p>
+                            <p className="content is-medium">{item[1]}</p>
+                        </div>
                     ))}
                 </div>
             )}
